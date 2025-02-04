@@ -1,3 +1,7 @@
+EMAIL_USER=balanarenmar@gmail.com
+EMAIL_PASSWORD=renlecks.5
+credentials.json
+
 # Logs
 logs
 *.log

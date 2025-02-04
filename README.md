@@ -37,14 +37,23 @@ This tool allows you to automatically transfer ownership of files in Google Driv
 ### **Step 2: Set Up the Project**
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/drive-ownership-transfer.git
+   git clone https://github.com/balanarenmar/drive-ownership-transfer.git
    cd drive-ownership-transfer
    ```
-2. Install dependencies:
+2. Check the installation of Node.js and npm:
    ```bash
-   npm install
+   node -v
+   npm -v
    ```
-3. Place the `credentials_desktop.json` file in the root directory of the project.
+3. Initialize a Node.js project:
+   ```bash
+   npm init -y
+   ```
+4. Install the required dependencies:
+   ```bash
+   npm install googleapis @google-cloud/local-auth dotenv
+   ```
+5. Place the `credentials_desktop.json` file in the root directory of the project.
 
 ---
 
@@ -64,7 +73,7 @@ This tool allows you to automatically transfer ownership of files in Google Driv
 ### **Step 4: Authenticate and Authorize**
 1. Run the script for the first time:
    ```bash
-   node index.js
+   node transfer_ownership.js
    ```
 2. A browser window will open, prompting you to log in to your Google account and authorize the app.
 3. After authorization, a `token.json` file will be created in the root directory. This file stores your OAuth 2.0 credentials for future use.
@@ -72,14 +81,14 @@ This tool allows you to automatically transfer ownership of files in Google Driv
 ---
 
 ### **Step 5: Transfer Ownership**
-1. Update the `fileId` and `newOwnerEmail` variables in the `index.js` file:
+1. Update the `fileId` and `newOwnerEmail` variables in the `transfer_ownership.js` file:
    ```javascript
    const fileId = 'YOUR_FILE_ID'; // Replace with your Google Drive file ID
    const newOwnerEmail = 'new-owner@gmail.com'; // Replace with the new owner's email
    ```
 2. Run the script again:
    ```bash
-   node index.js
+   node transfer_ownership.js
    ```
 3. The script will:
    - Transfer ownership of the specified file to the new owner.
@@ -98,17 +107,25 @@ This tool allows you to automatically transfer ownership of files in Google Driv
 
 ---
 
+## **Important Notes**
+- **Google Workspace Account Restrictions**:
+  - If the file is shared between different Google Workspace accounts, the transfer may be restricted by admin policies.
+  - Ownership transfer is only allowed between accounts within the same Google Workspace domain (e.g., `foo@example.com` to `bar@example.com`).
+  - Transfers between personal Google accounts (e.g., `foo@gmail.com` to `bar@gmail.com`) are not supported due to security restrictions.
+
+---
+
 ## **Deployment**
 ### **Local Deployment**
 - Run the script on your local machine using Node.js:
   ```bash
-  node index.js
+  node transfer_ownership.js
   ```
 
 ### **Cloud Deployment**
 1. **Google Cloud Functions**:
    - Deploy the script as a Google Cloud Function.
-   - Use the `index.js` file as the entry point.
+   - Use the `transfer_ownership.js` file as the entry point.
 2. **Docker**:
    - Create a Docker container for the script and deploy it to a cloud platform like Google Cloud Run or AWS Lambda.
 
@@ -118,6 +135,7 @@ This tool allows you to automatically transfer ownership of files in Google Driv
 - **Invalid Credentials**: Ensure the `credentials_desktop.json` and `token.json` files are correctly configured.
 - **API Quota Exceeded**: Check your Google Cloud Project's API quota and request an increase if necessary.
 - **Email Not Sent**: Verify that the Gmail API is enabled and the sender's email address is valid.
+- **Ownership Transfer Failed**: Ensure both the old and new owners are in the same Google Workspace domain.
 
 ---
 
@@ -128,3 +146,7 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## **Support**
 For questions or issues, please open an issue on the [GitHub repository](https://github.com/balanarenmar/drive-ownership-transfer).
+
+---
+
+This updated README includes the additional steps for checking Node.js installation, initializing the project, and installing dependencies, as well as the important note about Google Workspace account restrictions. Let me know if you need further adjustments! 🚀

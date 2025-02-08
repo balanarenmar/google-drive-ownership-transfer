@@ -138,15 +138,3 @@ This tool allows you to automatically transfer ownership of files in Google Driv
 - **Ownership Transfer Failed**: Ensure both the old and new owners are in the same Google Workspace domain.
 
 ---
-
-## **Contributing**
-Contributions are welcome! Please open an issue or submit a pull request.
-
----
-
-## **Support**
-For questions or issues, please open an issue on the [GitHub repository](https://github.com/balanarenmar/drive-ownership-transfer).
-
----
-
-This updated README includes the additional steps for checking Node.js installation, initializing the project, and installing dependencies, as well as the important note about Google Workspace account restrictions. Let me know if you need further adjustments! 🚀
